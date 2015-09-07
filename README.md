@@ -1,7 +1,6 @@
 # Venture
-
-A small adventure application developed in CSCI 495
-
+CSCI 495
+Changing the readme as an excercise in class
 ## Prerequisites
 
 You will need the following things properly installed on your computer.
