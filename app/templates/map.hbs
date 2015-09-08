@@ -1,0 +1,8 @@
+<h4>You are in "{{ name }}"</h4>
+<table>
+  {{#each row in rows}}
+    <tr>
+    {{#each col in row.columns}}
+     <td>{{cell.text}}</td>
+    </tr>
+</table>
