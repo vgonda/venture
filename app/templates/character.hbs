@@ -1,0 +1,11 @@
+<h4>Name: {{ character.name }}</h4>
+<h4>Max Health: {{ character.maxHealth }}</h4>
+<div>
+  Constitution:
+</div>
+<div>
+  <a {{action 'decreaseStat' 'constitution'}}>less</a>
+  <span>{{ character.constitution }}</span>
+  <a {{action 'increaseStat' 'constitution'}}>more</a>
+</div>
+<button {{action 'increaseStat' 'level' }}>Level Up!</button>
