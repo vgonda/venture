@@ -1,11 +1,42 @@
 <h4>Name: {{ character.name }}</h4>
+<h4>Level: {{ character.level }}</h4>
+<h4>Class: {{ character.class }}</h4>
 <h4>Max Health: {{ character.maxHealth }}</h4>
+<h4>Max Mana: {{ character.maxMana }}</h4>
+<div>Strength:</div>
 <div>
-  Constitution:
+  <button {{action 'decreaseStat' 'strength'}}>less</button>
+  <span>{{ character.strength }}</span>
+  <button {{action 'increaseStat' 'strength'}}>more</button>
 </div>
+<div>Intelligence:</div>
 <div>
-  <a {{action 'decreaseStat' 'constitution'}}>less</a>
+  <button {{action 'decreaseStat' 'intelligence'}}>less</button>
+  <span>{{ character.intelligence }}</span>
+  <button {{action 'increaseStat' 'intelligence'}}>more</button>
+</div>
+<div>Wisdom:</div>
+<div>
+  <button {{action 'decreaseStat' 'wisdom'}}>less</button>
+  <span>{{ character.wisdom }}</span>
+  <button {{action 'increaseStat' 'wisdom'}}>more</button>
+</div>
+<div>Dexterity:</div>
+<div>
+  <button {{action 'decreaseStat' 'dexterity'}}>less</button>
+  <span>{{ character.dexterity }}</span>
+  <button {{action 'increaseStat' 'dexterity'}}>more</button>
+</div>
+<div>Constitution:</div>
+<div>
+  <button {{action 'decreaseStat' 'constitution'}}>less</button>
   <span>{{ character.constitution }}</span>
-  <a {{action 'increaseStat' 'constitution'}}>more</a>
+  <button {{action 'increaseStat' 'constitution'}}>more</button>
+</div>
+<div>Charisma:</div>
+<div>
+  <button {{action 'decreaseStat' 'charisma'}}>less</button>
+  <span>{{ character.charisma }}</span>
+  <button {{action 'increaseStat' 'charisma'}}>more</button>
 </div>
 <button {{action 'increaseStat' 'level' }}>Level Up!</button>
