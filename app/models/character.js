@@ -1,17 +1,25 @@
 import Ember from 'ember';
+import Item from './item';
 const BASE_HP = 40;
 const BASE_MP = 30;
 
 export default Ember.Object.extend({
   level: 1,
-  int: 17,
+  intelligence: 17,
+  strength: 17,
+  wisdom: 17,
   constitution: 17,
-  strength: 10,
-  intelligence: 10,
-  wisdom: 10,
-  dexterity: 10,
-  charisma: 10,
-
+  dexterity: 17,
+  charisma: 17,
+  class: Ember.computed(function(){
+    var classes = ['Wizard', 'Warrior', 'Bard'];
+    return classes[Math.floor(Math.random()*classes.length)];
+  }),
+  
+  items: Ember.computed( function(){ 
+    return [Item.createRandom()];
+  }),
+  
   maxHealth: Ember.computed('level', 'constitution', function() {
     return BASE_HP + (this.get('constitution') * this.get('level'));
   }),
@@ -19,14 +27,18 @@ export default Ember.Object.extend({
   maxMana: Ember.computed('level', 'intelligence', function() {
     return BASE_MP + (this.get('intelligence') * this.get('level'));
   }),
-
+  
+  itemWeights: Ember.computed.mapBy('items','weight'),
+  itemWeight: Ember.computed.sum('itemWeights'),
+  hampered: Ember.computed('itemWeight','maxWeight', function(){
+     return this.get('itemWeight') > this.get('maxWeight');
+  }),
+  maxWeight: Ember.computed('strength', function() {
+     return this.get('strength') * 5; 
+  }),
+  
   name: Ember.computed(function(){
     var names = ['Zultar', 'Zorky', 'Merlin'];
     return names[Math.floor(Math.random()*names.length)];
-  }),
-
-  class: Ember.computed(function() {
-    var classes = ['wizard', 'warrior', 'bard', 'elf', 'valkyrie'];
-    return classes[Math.floor(Math.random()*classes.length)];
-  }),
+  })
 });

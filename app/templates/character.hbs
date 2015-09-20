@@ -1,42 +1,49 @@
 <h4>Name: {{ character.name }}</h4>
-<h4>Level: {{ character.level }}</h4>
-<h4>Class: {{ character.class }}</h4>
 <h4>Max Health: {{ character.maxHealth }}</h4>
 <h4>Max Mana: {{ character.maxMana }}</h4>
-<div>Strength:</div>
+{{#if character.hampered }}
+  <h5>I'm tired...</h5>
+{{/if}}
 <div>
-  <button {{action 'decreaseStat' 'strength'}}>less</button>
-  <span>{{ character.strength }}</span>
-  <button {{action 'increaseStat' 'strength'}}>more</button>
+  Constitution:
 </div>
-<div>Intelligence:</div>
 <div>
-  <button {{action 'decreaseStat' 'intelligence'}}>less</button>
-  <span>{{ character.intelligence }}</span>
-  <button {{action 'increaseStat' 'intelligence'}}>more</button>
+  <span class="btn btn-danger" {{action 'decreaseStat' 'constitution'}}>less</span>
+  <strong>{{ character.constitution }}</strong>
+  <span {{action 'increaseStat' 'constitution'}}>more</span>
 </div>
-<div>Wisdom:</div>
+  
 <div>
-  <button {{action 'decreaseStat' 'wisdom'}}>less</button>
-  <span>{{ character.wisdom }}</span>
-  <button {{action 'increaseStat' 'wisdom'}}>more</button>
+  Intelligence:
 </div>
-<div>Dexterity:</div>
 <div>
-  <button {{action 'decreaseStat' 'dexterity'}}>less</button>
-  <span>{{ character.dexterity }}</span>
-  <button {{action 'increaseStat' 'dexterity'}}>more</button>
+  <span {{action 'decreaseStat' 'intelligence'}}>less</span>
+  <strong>{{ character.intelligence }}</strong>
+  <span {{action 'increaseStat' 'intelligence'}}>more</span>
 </div>
-<div>Constitution:</div>
+
 <div>
-  <button {{action 'decreaseStat' 'constitution'}}>less</button>
-  <span>{{ character.constitution }}</span>
-  <button {{action 'increaseStat' 'constitution'}}>more</button>
+  Items:
 </div>
-<div>Charisma:</div>
 <div>
-  <button {{action 'decreaseStat' 'charisma'}}>less</button>
-  <span>{{ character.charisma }}</span>
-  <button {{action 'increaseStat' 'charisma'}}>more</button>
+  <button {{ action 'addItem' }}>add</button>
+  {{#if hasItems}}
+    <table>
+      <tr>
+        <td>Name</td>
+        <td>Weight</td>
+        <td></td>
+      </tr>
+      {{#each character.items as |item|}}
+        <tr>
+          <td>{{ item.name }}</td>
+          <td>{{ item.weight }}</td>
+          <td><button {{ action 'removeItem' item }}>remove</button></td>
+        </tr>
+      {{/each}}
+    </table>
+   {{else}}
+     <div> RUN AWAY!! no items...</div>
+   {{/if}}
 </div>
 <button {{action 'increaseStat' 'level' }}>Level Up!</button>
