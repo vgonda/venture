@@ -15,30 +15,36 @@ export default Ember.Object.extend({
     var classes = ['Wizard', 'Warrior', 'Bard'];
     return classes[Math.floor(Math.random()*classes.length)];
   }),
-  
-  items: Ember.computed( function(){ 
-    return [Item.createRandom()];
+
+  items: Ember.computed( function(){
+    return [Item.createRandom("magic sword", 10)];
   }),
-  
-  maxHealth: Ember.computed('level', 'constitution', function() {
-    return BASE_HP + (this.get('constitution') * this.get('level'));
+
+  maxHealth: Ember.computed('level', 'effectiveConstitution', function() {
+    return BASE_HP + (this.get('effectiveConstitution') * this.get('level'));
   }),
-  
+
   maxMana: Ember.computed('level', 'intelligence', function() {
     return BASE_MP + (this.get('intelligence') * this.get('level'));
   }),
-  
+
   itemWeights: Ember.computed.mapBy('items','weight'),
   itemWeight: Ember.computed.sum('itemWeights'),
   hampered: Ember.computed('itemWeight','maxWeight', function(){
      return this.get('itemWeight') > this.get('maxWeight');
   }),
   maxWeight: Ember.computed('strength', function() {
-     return this.get('strength') * 5; 
+     return this.get('strength') * 5;
   }),
-  
+
   name: Ember.computed(function(){
     var names = ['Zultar', 'Zorky', 'Merlin'];
     return names[Math.floor(Math.random()*names.length)];
+  }),
+
+  itemConstitutionBonuses: Ember.computed.mapBy('items', 'bonuses.constitution'),
+  constitutionBonus: Ember.computed.sum('itemConstitutionBonuses'),
+  effectiveConstitution: Ember.computed('constitutionBonus', 'constitution', function() {
+    return this.get('constitution') + this.get('constitutionBonus');
   })
 });

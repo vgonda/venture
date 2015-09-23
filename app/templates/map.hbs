@@ -1,14 +1,23 @@
+<div class="row">
+  <div class="col-sm-12">
+
 <h4>You are in "{{ name }}"</h4>
+<form class="form-inline">
+<lable for="width">Width: </lable>{{input value=mapWidth size="3" class="form-control" id="width"}}
+<lable for="height">Height: </lable>{{input value=mapHeight size="3" class="form-control" id="height"}}
+</form>
 
-Width: {{input value=mapWidth size="3"}}
-Height: {{input value=mapHeight size=3}}
-
-<table style="border: 1px solid gray;">
+<table class="table table-bordered">
   {{#each map.rows as |row|}}
     <tr>
       {{#each row.cells as |cell|}}
-        <td>{{cell.text}}</td>
+        <td>
+         <img {{bind-attr src=cell.image}} alt="health" height="32" width="32" >
+        {{cell.text}}
+        </td>
       {{/each}}
     </tr>
   {{/each}}
 </table>
+</div>
+</div>
