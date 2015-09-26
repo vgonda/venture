@@ -8,7 +8,8 @@ var MapRow = Ember.Object.extend({
   cells: []
 });
 var MapCell = Ember.Object.extend({
-  text: "."
+  text: "tree",
+  image: "https://cdn2.iconfinder.com/data/icons/flat-jewels-icon-set/512/0002_Tree.png",
 });
 
 export default Ember.Controller.extend({
