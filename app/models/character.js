@@ -1,10 +1,11 @@
 import Ember from 'ember';
+import DS from 'ember-data';
 import Item from './item';
 const BASE_HP = 40;
 const BASE_MP = 30;
 
-export default Ember.Object.extend({
-  level: 1,
+export default DS.Model.extend({
+  level: DS.attr('number', {defaultValue: 1}),
   intelligence: 17,
   strength: 17,
   wisdom: 17,
@@ -16,9 +17,7 @@ export default Ember.Object.extend({
     return classes[Math.floor(Math.random()*classes.length)];
   }),
 
-  items: Ember.computed( function(){
-    return [Item.createRandom("magic sword", 10)];
-  }),
+  items: DS.hasMany('items'),
 
   maxHealth: Ember.computed('level', 'effectiveConstitution', function() {
     return BASE_HP + (this.get('effectiveConstitution') * this.get('level'));
@@ -42,7 +41,7 @@ export default Ember.Object.extend({
     return names[Math.floor(Math.random()*names.length)];
   }),
 
-  itemConstitutionBonuses: Ember.computed.mapBy('items', 'bonuses.constitution'),
+  itemConstitutionBonuses: Ember.computed.mapBy('items', 'constitutionBonus'),
   constitutionBonus: Ember.computed.sum('itemConstitutionBonuses'),
   effectiveConstitution: Ember.computed('constitutionBonus', 'constitution', function() {
     return this.get('constitution') + this.get('constitutionBonus');

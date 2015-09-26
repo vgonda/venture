@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import Item from '../models/item';
 
 export default Ember.Controller.extend({
   character: Ember.computed.alias('model'),
@@ -24,7 +23,13 @@ export default Ember.Controller.extend({
     },
     addItem: function() {
       if (!this.get('character.hampered')) {
-       this.get('character.items').pushObject(Item.createRandom(this.get('newItem'), this.get('newWeight')));
+        var item = this.store.createRecord('item',
+                                          {
+          name: this.get('newItem'),
+          weight: parseInt(this.get('newWeight')),
+          constitutionBonus:3
+        });
+       this.get('character.items').pushObject(item);
       }
     },
     increaseStat: function(stat) {
