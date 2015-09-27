@@ -27,7 +27,7 @@ export default Ember.Controller.extend({
                                           {
           name: this.get('newItem'),
           weight: parseInt(this.get('newWeight')),
-          constitutionBonus:3
+          constitutionBonus: parseInt(this.get('newConstitution')),
         });
        this.get('character.items').pushObject(item);
       }

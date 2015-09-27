@@ -1,12 +1,52 @@
 <div class="row">
-  <div class="col-sm-12">
-
-<h4>You are in "{{ name }}"</h4>
+  <div class="col-sm-6">
+   <div class="row">
+    <div class="col-sm-12">
+     {{partial "shared/character"}}
+    </div>
+   </div>
+  <div class="row">
+   <div class="col-sm-12">
+    <div class="panel panel-default">
+     <div class="panel-heading">Navigation</div>
+     <div class="panel-body">
+     <table>
+     <tr>
+     <td></td><td>
+      <button class="btn btn-primary" aria-label="Navigate Up">
+       <span class="glyphicon glyphicon-hand-up"></span>
+      </button>
+      </td><td></td>
+      </tr>
+      <tr>
+     <td><button class="btn btn-primary" aria-label="Navigate Left">
+       <span class="glyphicon glyphicon-hand-left"></span>
+      </button></td><td>
+      </td><td><button class="btn btn-primary" aria-label="Navigate Right">
+       <span class="glyphicon glyphicon-hand-right"></span>
+      </button></td>
+      </tr>
+      <tr>
+     <td></td><td>
+      <button class="btn btn-primary" aria-label="Navigate Down">
+       <span class="glyphicon glyphicon-hand-down"></span>
+      </button>
+      </td><td></td>
+      </tr>
+      </table>
+     </div>
+    </div>
+   </div>
+  </div>
+</div>
+  <div class="col-sm-6">
+  <div class="panel panel-default">
+<div class="panel-heading">You are in "{{ name }}"</div>
+<div class="panel-body">
 <form class="form-inline">
 <lable for="width">Width: </lable>{{input value=mapWidth size="3" class="form-control" id="width"}}
 <lable for="height">Height: </lable>{{input value=mapHeight size="3" class="form-control" id="height"}}
 </form>
-
 <table class="table table-bordered">
   {{#each map.rows as |row|}}
     <tr>
@@ -19,5 +59,7 @@
     </tr>
   {{/each}}
 </table>
+</div>
+</div>
 </div>
 </div>

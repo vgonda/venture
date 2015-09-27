@@ -1,23 +1,6 @@
 <div class="row">
   <div class="col-sm-12">
-    <div class="panel panel-default">
-      <div class="panel-heading">Basic Info</div>
-      <div class="panel-body">
-        <h3>{{ character.name }} Level
-          <span {{action 'increaseStat' 'level' }}
-            class="btn btn-sm btn-success">{{ character.level }}</span> {{ character.class }}</h3>
-        <div>Health</div>
-        <img {{bind-attr src=healthUrl}} alt="health" height="32" width="32" >
-        <span> x {{ character.maxHealth}}</span>
-        <div>Mana</div>
-        <img {{bind-attr src=manaUrl}} alt="health" height="32" width="32" >
-        <span> x {{ character.maxMana}}</span>
-        <div>Burden</div>
-        <img {{bind-attr src=weightUrl}} alt="health" height="32" width="32" >
-        <span> x {{ character.itemWeight}}</span>
-        {{#if character.hampered}}<img {{bind-attr src=hamperedUrl}} alt="health" height="32" width="32" >{{/if}}
-      </div>
-    </div>
+  {{partial "shared/character"}}
   </div>
   </div>
   <div class="row">
@@ -119,9 +102,14 @@
         </table>
         <form class="form-inline">
         <div class="form-group">
-        <lable for="add">Add: </lable>{{input type="text" valueBinding=newItem class="form-control" id="add"}}
-        <lable for="add">Weight: </lable>{{input type="number" valueBinding=newWeight class="form-control" id="addWeight"}}
-        <div class='btn btn-success pull-right' {{ action 'addItem' }}>pickup</div>
+        {{input type="text" valueBinding=newItem class="form-control" id="add" placeholder="Item Name"}}
+        {{input type="number" valueBinding=newWeight class="form-control" id="addWeight" placeholder="Item Weight"}}
+        <div class="input-group">
+         {{input type="number" valueBinding=newConstitution class="form-control" id="addConstitution" placeholder="Constitution Bonus"}}
+         <span class="input-group-btn">
+          <button class="btn btn-default" type="button" {{ action 'addItem' }}>Pickup</button>
+         </span>
+        </div>
         </div>
         </form>
       </div>
