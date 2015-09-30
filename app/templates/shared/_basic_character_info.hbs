@@ -1,0 +1,18 @@
+    <div class="panel panel-default">
+      <div class="panel-heading">Basic Character Info</div>
+      <div class="panel-body">
+        <h3>{{ character.name }} Level
+          <span {{action 'increaseStat' 'level' }}
+            class="btn btn-sm btn-success">{{ character.level }}</span> {{ character.class }}</h3>
+        <div>Health</div>
+        <img {{bind-attr src=healthUrl}} alt="health" height="32" width="32" >
+        <span> x {{ character.maxHealth}}</span>
+        <div>Mana</div>
+        <img {{bind-attr src=manaUrl}} alt="health" height="32" width="32" >
+        <span> x {{ character.maxMana}}</span>
+        <div>Burden</div>
+        <img {{bind-attr src=weightUrl}} alt="health" height="32" width="32" >
+        <span> x {{ character.itemWeight}}</span>
+        {{#if character.hampered}}<img {{bind-attr src=hamperedUrl}} alt="health" height="32" width="32" >{{/if}}
+      </div>
+    </div>

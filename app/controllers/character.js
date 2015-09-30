@@ -1,7 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  character: Ember.computed.alias('model'),
+  characters: Ember.computed.alias('model'),
+  character: Ember.computed.alias('characters.firstObject'),
 
   hasItems: Ember.computed.notEmpty('character.items'),
   burdenPercent: Ember.computed('character.itemWeight', 'character.maxWeight', function() {
@@ -32,12 +33,26 @@ export default Ember.Controller.extend({
        this.get('character.items').pushObject(item);
       }
     },
+    addCharacter: function() {
+        var char = this.store.createRecord('character',
+        {
+          name: this.get('newCharacter'),
+          class: this.get('newClass'),
+        });
+       char.save();
+    },
     increaseStat: function(stat) {
       this._modifyStat(stat, 1);
     },
 
     decreaseStat: function(stat) {
       this._modifyStat(stat, -1);
+    },
+    
+    viewCharacter: function(id) {
+    },
+    
+    removeCharacter: function(id) {
     },
   }
 });

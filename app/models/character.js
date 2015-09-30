@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import DS from 'ember-data';
-import Item from './item';
 const BASE_HP = 40;
 const BASE_MP = 30;
 
@@ -12,10 +11,7 @@ export default DS.Model.extend({
   constitution: 17,
   dexterity: 17,
   charisma: 17,
-  class: Ember.computed(function(){
-    var classes = ['Wizard', 'Warrior', 'Bard'];
-    return classes[Math.floor(Math.random()*classes.length)];
-  }),
+  class: DS.attr(),
 
   items: DS.hasMany('items'),
 
@@ -36,10 +32,7 @@ export default DS.Model.extend({
      return this.get('strength') * 5;
   }),
 
-  name: Ember.computed(function(){
-    var names = ['Zultar', 'Zorky', 'Merlin'];
-    return names[Math.floor(Math.random()*names.length)];
-  }),
+  name: DS.attr(),
 
   itemConstitutionBonuses: Ember.computed.mapBy('items', 'constitutionBonus'),
   constitutionBonus: Ember.computed.sum('itemConstitutionBonuses'),

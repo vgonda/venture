@@ -1,18 +1,118 @@
+<div class="row">
+  <div class="col-sm-12">
+  {{partial "shared/basic_character_info"}}
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-sm-6">
     <div class="panel panel-default">
-      <div class="panel-heading">Basic Character Info</div>
+      <div class="panel-heading">Stats</div>
       <div class="panel-body">
-        <h3>{{ character.name }} Level
-          <span {{action 'increaseStat' 'level' }}
-            class="btn btn-sm btn-success">{{ character.level }}</span> {{ character.class }}</h3>
-        <div>Health</div>
-        <img {{bind-attr src=healthUrl}} alt="health" height="32" width="32" >
-        <span> x {{ character.maxHealth}}</span>
-        <div>Mana</div>
-        <img {{bind-attr src=manaUrl}} alt="health" height="32" width="32" >
-        <span> x {{ character.maxMana}}</span>
-        <div>Burden</div>
-        <img {{bind-attr src=weightUrl}} alt="health" height="32" width="32" >
-        <span> x {{ character.itemWeight}}</span>
-        {{#if character.hampered}}<img {{bind-attr src=hamperedUrl}} alt="health" height="32" width="32" >{{/if}}
+        <table class="table table-hover">
+          <thead>
+              <th>STAT</th>
+              <th>VALUE</th>
+              <th>BONUS</th>
+          </thead>
+          <tbody>
+          <tr>
+           <td>Strength</td>
+           <td>
+            <button class="btn btn-danger btn-sm" {{action 'decreaseStat' 'strength'}}>-</button>
+            <strong>{{ character.strength }}</strong>
+            <button class="btn btn-success btn-sm" {{action 'increaseStat' 'strength'}}>+</button>
+           </td>
+            <td>{{ character.strengthBonus }}</td>
+          </tr>
+          <tr>
+            <td>Intelligence</td>
+            <td>
+              <button class="btn btn-danger btn-sm" {{action 'decreaseStat' 'intelligence'}}>-</button>
+              <strong>{{ character.intelligence }}</strong>
+              <button class="btn btn-success btn-sm" {{action 'increaseStat' 'intelligence'}}>+</button>
+            </td>
+            <td>{{ character.intelligenceBonus }}</td>
+          </tr>
+          <tr>
+            <td>Wisdom</td>
+            <td>
+              <button class="btn btn-danger btn-sm" {{action 'decreaseStat' 'wisdom'}}>-</button>
+              <strong>{{ character.wisdom }}</strong>
+              <button class="btn btn-success btn-sm" {{action 'increaseStat' 'wisdom'}}>+</button>
+            </td>
+            <td>{{ character.wisdomBonus }}</td>
+          </tr>
+          <tr>
+            <td>Dexterity</td>
+            <td>
+              <button class="btn btn-danger btn-sm" {{action 'decreaseStat' 'dexterity'}}>-</button>
+              <strong>{{ character.dexterity }}</strong>
+              <button class="btn btn-success btn-sm" {{action 'increaseStat' 'dexterity'}}>+</button>
+            </td>
+            <td>{{ character.dexterityBonus }}</td>
+          </tr>
+          <tr>
+            <td>Constitution</td>
+            <td>
+              <button class="btn btn-danger btn-sm" {{action 'decreaseStat' 'constitution'}}>-</button>
+              <strong>{{ character.effectiveConstitution }}</strong>
+              <button class="btn btn-success btn-sm" {{action 'increaseStat' 'constitution'}}>+</button>
+            </td>
+            <td>{{ character.constitutionBonus }}</td>
+          </tr>
+          <tr>
+            <td>Charisma</td>
+            <td>
+              <button class="btn btn-danger btn-sm" {{action 'decreaseStat' 'charisma'}}>-</button>
+              <strong>{{ character.charisma }}</strong>
+              <button class="btn btn-success btn-sm" {{action 'increaseStat' 'charisma'}}>+</button>
+            </td>
+            <td>{{ character.charismaBonus }}</td>
+          </tr>
+          </tbody>
+        </table>
       </div>
     </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">Inventory</div>
+      <div class="panel-body">
+        <table class="table table-hover">
+          <thead>
+            <th>name</th>
+            <th>weight</th>
+            <th>bonuses</th>
+            <th>&nbsp;</th>
+          </thead>
+          <tbody>
+            {{#each character.items as |item|}}
+              <tr>
+                <td><strong>{{ item.name }}</strong></td>
+                <td>{{ item.weight }}</td>
+                <td>
+                  {{#each item.bonusStrings as |b|}}
+                    <span class="label label-success">{{b}}</span>
+                  {{/each}}
+                </td>
+                <td><span class="btn btn-xs" {{ action 'removeItem' item }}>drop</span></td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+        <form class="form-inline">
+        <div class="form-group">
+        {{input type="text" valueBinding=newItem class="form-control" id="add" placeholder="Item Name"}}
+        {{input type="number" valueBinding=newWeight class="form-control" id="addWeight" placeholder="Item Weight"}}
+        <div class="input-group">
+         {{input type="number" valueBinding=newConstitution class="form-control" id="addConstitution" placeholder="Constitution Bonus"}}
+         <span class="input-group-btn">
+          <button class="btn btn-default" type="button" {{ action 'addItem' }}>Pickup</button>
+         </span>
+        </div>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
