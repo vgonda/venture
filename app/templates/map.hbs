@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-sm-6">
+  <div class="col-sm-4">
    <div class="row">
     <div class="col-sm-12">
      {{partial "shared/character"}}
@@ -39,7 +39,7 @@
    </div>
   </div>
 </div>
-  <div class="col-sm-6">
+  <div class="col-sm-8">
   <div class="panel panel-default">
 <div class="panel-heading">You are in "{{ name }}"</div>
 <div class="panel-body">
@@ -52,7 +52,7 @@
     <tr>
       {{#each row.cells as |cell|}}
         <td>
-         <img {{bind-attr src=cell.image}} alt="health" height="32" width="32" >
+         <span class="glyphicon glyphicon-tree-deciduous"></span>
         {{cell.text}}
         </td>
       {{/each}}
