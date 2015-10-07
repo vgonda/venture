@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
   }),
 
   _modifyStat: function(stat, amount){
-    this.set('model.'+stat, this.get('model.'+stat)+amount);
+    this.set('character.'+stat, this.get('character.'+stat)+amount);
   },
 
   healthUrl: "http://cdn.1001freedownloads.com/icon/thumb/383304/heart-icon.png",
@@ -30,7 +30,8 @@ export default Ember.Controller.extend({
           weight: parseInt(this.get('newWeight')),
           constitutionBonus: parseInt(this.get('newConstitution')),
         });
-       this.get('character.items').pushObject(item);
+       this.get('character.items').pushObject(item).save();
+        item.save();
       }
     },
     addCharacter: function() {
@@ -39,7 +40,11 @@ export default Ember.Controller.extend({
           name: this.get('newCharacter'),
           class: this.get('newClass'),
         });
-       char.save();
+      char.save();
+      this.set('character', char);
+    },
+    saveCharacter: function() {
+     this.get('character').save();
     },
     increaseStat: function(stat) {
       this._modifyStat(stat, 1);
@@ -48,11 +53,16 @@ export default Ember.Controller.extend({
     decreaseStat: function(stat) {
       this._modifyStat(stat, -1);
     },
-    
-    viewCharacter: function(id) {
+
+    viewCharacter: function(char) {
+      this.set('character', char);
     },
-    
-    removeCharacter: function(id) {
+
+    removeCharacter: function() {
+      this.get('character').deleteRecord();
+      this.get('character').save().then(function() {
+      this.set('character', this.get('characters.firstObject'));
+      });
     },
   }
 });

@@ -14,15 +14,14 @@
         <div class="col-sm-3">
             <div class="list-group">
               {{#each characters as |character|}}
-              <button id={{character.id}} type="button" class="list-group-item" {{action 'viewCharacter' 'character.id'}}>
+              <button id={{character.id}} type="button" class="list-group-item" {{action 'viewCharacter' character}}>
               {{character.name}}
-              <button class="btn btn-xs btn-danger" {{action 'removeCharacter' 'character.id'}}><span class="glyphicon glyphicon-remove"></span></button>
               <span class="badge">{{character.level}}</span></button>
               {{/each}}
             </div>
         </div>
         <div class="col-sm-9">
-         {{partial "shared/character"}} 
+         {{partial "shared/character"}}
         </div>
     </div>
   </div>
