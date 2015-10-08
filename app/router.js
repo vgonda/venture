@@ -9,6 +9,11 @@ Router.map(function() {
   // sub routes in application
   this.route('map');
   this.route('character');
+  this.route('login');
+  //nested routes
+  this.route('authenticated', function() {
+    this.route('secretz');
+  });
 });
 
 export default Router;
