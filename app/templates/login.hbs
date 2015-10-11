@@ -1,3 +1,11 @@
-{{input type="text" valueBinding=identification class="form-control" id="email" placeholder="Email"}}
-{{input type="text" valueBinding=password class="form-control" id="password" placeholder="Password"}}
-<button class="btn btn-default" type="button" {{ action 'login' }}>Login</button>
+<div class="container">
+  <div class="row">
+    <div class="jumbotron">
+      <div class="input-group">
+        {{input type="text" valueBinding=identification class="form-control" id="email" placeholder="Email"}}
+        {{input type="text" valueBinding=password class="form-control" id="password" placeholder="Password"}}
+        <button class="btn btn-default" type="button" {{ action 'login' }}>Login</button>
+      </div>
+    </div>
+  </div>
+</div>
