@@ -4,13 +4,13 @@ const BASE_HP = 40;
 const BASE_MP = 30;
 
 export default DS.Model.extend({
-  level: DS.attr('number', {defaultValue: 1}),
-  intelligence: 17,
-  strength: 17,
-  wisdom: 17,
-  constitution: 17,
-  dexterity: 17,
-  charisma: 17,
+  level: DS.attr('number', {defaultValue: 10}),
+  intelligence: DS.attr('number', {defaultValue: 10}),
+  strength: DS.attr('number', {defaultValue: 10}),
+  wisdom: DS.attr('number', {defaultValue: 10}),
+  constitution: DS.attr('number', {defaultValue: 10}),
+  dexterity: DS.attr('number', {defaultValue: 10}),
+  charisma: DS.attr('number', {defaultValue: 10}),
   class: DS.attr(),
 
   items: DS.hasMany('items', {async: true}),

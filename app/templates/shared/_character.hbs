@@ -15,60 +15,12 @@
               <th>BONUS</th>
           </thead>
           <tbody>
-          <tr>
-           <td>Strength</td>
-           <td>
-            <button class="btn btn-danger btn-sm" {{action 'decreaseStat' 'strength'}}>-</button>
-            <strong>{{ character.strength }}</strong>
-            <button class="btn btn-success btn-sm" {{action 'increaseStat' 'strength'}}>+</button>
-           </td>
-            <td>{{ character.strengthBonus }}</td>
-          </tr>
-          <tr>
-            <td>Intelligence</td>
-            <td>
-              <button class="btn btn-danger btn-sm" {{action 'decreaseStat' 'intelligence'}}>-</button>
-              <strong>{{ character.intelligence }}</strong>
-              <button class="btn btn-success btn-sm" {{action 'increaseStat' 'intelligence'}}>+</button>
-            </td>
-            <td>{{ character.intelligenceBonus }}</td>
-          </tr>
-          <tr>
-            <td>Wisdom</td>
-            <td>
-              <button class="btn btn-danger btn-sm" {{action 'decreaseStat' 'wisdom'}}>-</button>
-              <strong>{{ character.wisdom }}</strong>
-              <button class="btn btn-success btn-sm" {{action 'increaseStat' 'wisdom'}}>+</button>
-            </td>
-            <td>{{ character.wisdomBonus }}</td>
-          </tr>
-          <tr>
-            <td>Dexterity</td>
-            <td>
-              <button class="btn btn-danger btn-sm" {{action 'decreaseStat' 'dexterity'}}>-</button>
-              <strong>{{ character.dexterity }}</strong>
-              <button class="btn btn-success btn-sm" {{action 'increaseStat' 'dexterity'}}>+</button>
-            </td>
-            <td>{{ character.dexterityBonus }}</td>
-          </tr>
-          <tr>
-            <td>Constitution</td>
-            <td>
-              <button class="btn btn-danger btn-sm" {{action 'decreaseStat' 'constitution'}}>-</button>
-              <strong>{{ character.effectiveConstitution }}</strong>
-              <button class="btn btn-success btn-sm" {{action 'increaseStat' 'constitution'}}>+</button>
-            </td>
-            <td>{{ character.constitutionBonus }}</td>
-          </tr>
-          <tr>
-            <td>Charisma</td>
-            <td>
-              <button class="btn btn-danger btn-sm" {{action 'decreaseStat' 'charisma'}}>-</button>
-              <strong>{{ character.charisma }}</strong>
-              <button class="btn btn-success btn-sm" {{action 'increaseStat' 'charisma'}}>+</button>
-            </td>
-            <td>{{ character.charismaBonus }}</td>
-          </tr>
+           {{modify-character-stat char=character stat='strength' value=character.strength}}
+           {{modify-character-stat char=character stat='intelligence' value=character.intelligence}}
+           {{modify-character-stat char=character stat='wisdom' value=character.wisdom}}
+           {{modify-character-stat char=character stat='dexterity' value=character.dexterity}}
+           {{modify-character-stat char=character stat='constitution' value=character.constitution}}
+           {{modify-character-stat char=character stat='charisma' value=character.charisma}}
           </tbody>
         </table>
       </div>

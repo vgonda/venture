@@ -4,6 +4,7 @@ import DS from 'ember-data';
 export default DS.Model.extend({
   character: DS.belongsTo('character'),
   name: DS.attr(),
+  weight: DS.attr(),
   constitutionBonus: DS.attr('number', {defaultValue: 0}),
   bonusStrings: Ember.computed('constitutionBonus', function() {
     var bonusStrings = [];
