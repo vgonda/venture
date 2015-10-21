@@ -15,12 +15,12 @@
               <th>BONUS</th>
           </thead>
           <tbody>
-           {{modify-character-stat char=character stat='strength' value=character.strength}}
-           {{modify-character-stat char=character stat='intelligence' value=character.intelligence}}
-           {{modify-character-stat char=character stat='wisdom' value=character.wisdom}}
-           {{modify-character-stat char=character stat='dexterity' value=character.dexterity}}
-           {{modify-character-stat char=character stat='constitution' value=character.constitution}}
-           {{modify-character-stat char=character stat='charisma' value=character.charisma}}
+           {{modify-character-stat char=character stat='strength' value=character.strength bonus=character.strengthBonus}}
+           {{modify-character-stat char=character stat='intelligence' value=character.intelligence bonus=character.intelligenceBonus}}
+           {{modify-character-stat char=character stat='wisdom' value=character.wisdom bonus=character.wisdomBonus}}
+           {{modify-character-stat char=character stat='dexterity' value=character.dexterity bonus=character.dexterityBonus}}
+           {{modify-character-stat char=character stat='constitution' value=character.constitution bonus=character.constitutionBonus bonus=character.constitutionBonus}}
+           {{modify-character-stat char=character stat='charisma' value=character.charisma bonus=character.charismaBonus}}
           </tbody>
         </table>
       </div>
