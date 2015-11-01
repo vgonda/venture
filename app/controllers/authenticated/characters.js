@@ -1,8 +1,13 @@
 import Ember from 'ember';
+import EmberValidations from 'ember-validations';
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(EmberValidations, {
   characters: Ember.computed.alias('model'),
   character: Ember.computed.alias('characters.firstObject'),
+
+  validations : {
+    presence: true
+  },
 
   hasItems: Ember.computed.notEmpty('character.items'),
   burdenPercent: Ember.computed('character.itemWeight', 'character.maxWeight', function() {
