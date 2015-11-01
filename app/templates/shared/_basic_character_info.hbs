@@ -1,7 +1,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">Basic Character Info</div>
       <div class="panel-body">
-        <h3>{{ character.name }} Level
+        <h3>{{input type="text" valueBinding=character.name placeholder="Name"}} Level
           <span {{action 'increaseStat' 'level' }}
             class="btn btn-sm btn-success">{{ character.level }}</span> {{ character.characterClass }}</h3>
         <div>Health</div>
