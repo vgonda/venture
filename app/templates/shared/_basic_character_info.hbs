@@ -3,7 +3,7 @@
       <div class="panel-body">
         <h3>{{ character.name }} Level
           <span {{action 'increaseStat' 'level' }}
-            class="btn btn-sm btn-success">{{ character.level }}</span> {{ character.class }}</h3>
+            class="btn btn-sm btn-success">{{ character.level }}</span> {{ character.characterClass }}</h3>
         <div>Health</div>
         <img {{bind-attr src=healthUrl}} alt="health" height="32" width="32" >
         <span> x {{ character.maxHealth}}</span>

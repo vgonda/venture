@@ -10,7 +10,7 @@ Router.map(function() {
   //nested routes
   this.route('authenticated', function() {
     this.route('map');
-    this.route('character');
+    this.route('characters');
     this.route('secretz');
   });
 });

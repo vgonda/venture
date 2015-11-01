@@ -30,8 +30,7 @@ export default Ember.Controller.extend({
           weight: parseInt(this.get('newWeight')),
           constitutionBonus: parseInt(this.get('newConstitution')),
         });
-       this.get('character.items').pushObject(item).save();
-        item.save();
+       this.get('character.items').pushObject(item);
       }
     },
     addCharacter: function() {
@@ -40,7 +39,6 @@ export default Ember.Controller.extend({
           name: this.get('newCharacter'),
           class: this.get('newClass'),
         });
-      char.save();
       this.set('character', char);
     },
     saveCharacter: function() {
