@@ -1,7 +1,11 @@
     <div class="panel panel-default">
       <div class="panel-heading">Basic Character Info</div>
       <div class="panel-body">
-        <h3>{{input type="text" valueBinding=character.name placeholder="Name"}} Level
+        <h3><div class={{if errors.character.name 'has-error'}}>{{input class="form-control" type="text" valueBinding=character.name placeholder="Name"}}</div>
+        {{#each errors.character.name as |err|}}
+        <span class="label label-danger">{{ err }}</span>
+        {{/each}}
+        Level
           <span {{action 'increaseStat' 'level' }}
             class="btn btn-sm btn-success">{{ character.level }}</span> {{ character.characterClass }}</h3>
         <div>Health</div>

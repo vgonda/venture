@@ -5,8 +5,11 @@ export default Ember.Controller.extend(EmberValidations, {
   characters: Ember.computed.alias('model'),
   character: Ember.computed.alias('characters.firstObject'),
 
-  validations : {
-    presence: true
+  validations: {
+    'character.name': {
+      presence: true,
+      length: { minimum: 3 }
+    }
   },
 
   hasItems: Ember.computed.notEmpty('character.items'),
@@ -47,7 +50,9 @@ export default Ember.Controller.extend(EmberValidations, {
       this.set('character', char);
     },
     saveCharacter: function() {
-     this.get('character').save();
+      if (this.get('isValid')) {
+        this.get('character').save();
+      }
     },
     increaseStat: function(stat) {
       this._modifyStat(stat, 1);
