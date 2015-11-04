@@ -6,7 +6,7 @@
         <span class="label label-danger">{{ err }}</span>
         {{/each}}
         Level
-          <span {{action 'increaseStat' 'level' }}
+          <span {{action 'levelUp' }}
             class="btn btn-sm btn-success">{{ character.level }}</span> {{ character.characterClass }}</h3>
         <div>Health</div>
         <img {{bind-attr src=healthUrl}} alt="health" height="32" width="32" >
