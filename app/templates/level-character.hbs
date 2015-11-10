@@ -1,3 +1,36 @@
-<h1>Level up!!</h1>
-
-<span class='btn btn-default' {{action 'closeModal' }}>close</span>
+<div id="myModal" class="modal fade in" style="display: block;" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title">{{character.name}} - Level up!!</h1>
+        <h4>Level: {{character.level}} Points left: {{model.pointsLeft}}</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table table-hover">
+         <thead>
+           <th>STAT</th>
+           <th>VALUE</th>
+           <th>BONUS</th>
+         </thead>
+         <tbody>
+          {{modify-character-stat char=character stat='level' value=character.level bonus=character.levelBonus pointsLeft=model.pointsLeft}}
+          {{modify-character-stat char=character stat='strength' value=character.strength bonus=character.strengthBonus pointsLeft=model.pointsLeft}}
+          {{modify-character-stat char=character stat='intelligence' value=character.intelligence bonus=character.intelligenceBonus pointsLeft=model.pointsLeft}}
+          {{modify-character-stat char=character stat='wisdom' value=character.wisdom bonus=character.wisdomBonus pointsLeft=model.pointsLeft}}
+          {{modify-character-stat char=character stat='dexterity' value=character.dexterity bonus=character.dexterityBonus pointsLeft=model.pointsLeft}}
+          {{modify-character-stat char=character stat='constitution' value=character.constitution bonus=character.constitutionBonus bonus=character.constitutionBonus pointsLeft=model.pointsLeft}}
+          {{modify-character-stat char=character stat='charisma' value=character.charisma bonus=character.charismaBonus pointsLeft=model.pointsLeft}}
+         </tbody>
+       </table>
+      </div>
+      <div class="modal-footer">
+      {{#if hasPointsLeft}}
+        <span class='btn btn-default' disabled="disabled">close</span>
+      {{else}}
+        <span class='btn btn-default' {{action 'saveCharacter' }}>close</span>
+      {{/if}}
+      </div>
+    </div>
+  </div>
+</div>

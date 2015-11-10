@@ -2,6 +2,6 @@
 <td>
   <button class="btn btn-danger btn-sm" {{action 'decreaseStat'}}>-</button>
   <strong>{{ value }}</strong>
-  <button class="btn btn-success btn-sm" {{action 'increaseStat'}}>+</button>
+  <button class="btn btn-success btn-sm" disabled={{unless hasPointsLeft 'disabled'}} {{action 'increaseStat'}}>+</button>
 </td>
 <td>{{bonus}}</td>

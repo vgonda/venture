@@ -63,9 +63,11 @@ export default Ember.Controller.extend(EmberValidations, {
     },
 
     levelUp: function() {
+      this._modifyStat('level', 1);
       this.send('showModal', {
         template: 'level-character',
-        character: this.get('character')
+        character: this.get('character'),
+        pointsLeft: 3
       });
     },
 
