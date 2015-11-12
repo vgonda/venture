@@ -1,0 +1,14 @@
+      <form class="form-inline">
+        <div class="form-group">
+        {{input type="text" valueBinding=newCharacter class="form-control" id="addChar" placeholder="Character Name"}}
+        <div class="input-group">
+         {{input type="text" valueBinding=newClass class="form-control" id="addClass" placeholder="Class"}}
+         <span class="input-group-btn">
+          <button class="btn btn-default" type="button" {{ action 'addCharacter' }}>Add</button>
+         </span>
+        </div>
+        </div>
+        </form>
+{{#if character}}
+{{partial 'shared/character'}}
+{{/if}}

@@ -6,12 +6,14 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('login');
+  this.route('login', {path: '/'});
   //nested routes
   this.route('authenticated', function() {
     this.route('map');
     this.route('characters');
+    this.route('add-a-character');
     this.route('secretz');
+    this.route('play', {path: 'play/:character'});
   });
 });
 

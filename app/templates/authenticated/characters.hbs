@@ -1,27 +1,19 @@
 <div class="container">
       <div class="row">
-      <form class="form-inline">
-        <div class="form-group">
-        {{input type="text" valueBinding=newCharacter class="form-control" id="addChar" placeholder="Character Name"}}
-        <div class="input-group">
-         {{input type="text" valueBinding=newClass class="form-control" id="addClass" placeholder="Class"}}
-         <span class="input-group-btn">
-          <button class="btn btn-default" type="button" {{ action 'addCharacter' }}>Add</button>
-         </span>
-        </div>
-        </div>
-        </form>
-        <div class="col-sm-3">
+        <div class="col-sm-12">
+        <h1>Characters</h1>
             <div class="list-group">
               {{#each characters as |character|}}
-              <button id={{character.id}} type="button" class="list-group-item" {{action 'viewCharacter' character}}>
-              {{character.name}}
-              <span class="badge">{{character.level}}</span></button>
+                {{#link-to 'authenticated.play' character}}
+                <button id={{character.id}} type="button" class="list-group-item">
+                {{character.name}}
+                <span class="badge">{{character.level}}</span></button>
+                {{/link-to}}
               {{/each}}
+              {{#link-to 'authenticated.add-a-character'}}
+              <button type="button" class="list-group-item">Add a character</button>
+              {{/link-to}}
             </div>
-        </div>
-        <div class="col-sm-9">
-         {{partial "shared/character"}}
         </div>
     </div>
   </div>
