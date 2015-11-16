@@ -7,7 +7,8 @@
                 {{#link-to 'authenticated.play' character}}
                 <button id={{character.id}} type="button" class="list-group-item">
                 {{character.name}}
-                <span class="badge">{{character.level}}</span></button>
+                <span class="badge">{{character.level}}</span>
+                <span class="btn btn-danger btn-sm" {{action 'removeCharacter' character.id}}>Delete</span></button>
                 {{/link-to}}
               {{/each}}
               {{#link-to 'authenticated.add-a-character'}}

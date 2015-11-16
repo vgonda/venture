@@ -70,5 +70,9 @@ export default Ember.Controller.extend(EmberValidations, {
         pointsLeft: 3
       });
     },
+    randomizeCharacter: function() {
+      var randomCharacter = this.get('randomCharacterGenerator').randomize();
+      this.set('character', randomCharacter);
+    },
   }
 });
