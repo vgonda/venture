@@ -4,6 +4,8 @@ const BASE_HP = 40;
 const BASE_MP = 30;
 
 export default DS.Model.extend({
+  x: DS.attr('number', {defaultValue: 0}),
+  y: DS.attr('number', {defaultValue: 0}),
   statPointsToSpend: 20, 
   level: DS.attr('number', {defaultValue: 1}),
   intelligence: DS.attr('number', {defaultValue: 10}),

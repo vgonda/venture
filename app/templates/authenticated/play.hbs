@@ -13,22 +13,22 @@
      <table>
      <tr>
      <td></td><td>
-      <button class="btn btn-primary" aria-label="Navigate Up">
+      <button class="btn btn-primary" aria-label="Navigate Up" {{ action 'move' 0 -1 }}>
        <span class="glyphicon glyphicon-hand-up"></span>
       </button>
       </td><td></td>
       </tr>
       <tr>
-     <td><button class="btn btn-primary" aria-label="Navigate Left">
+     <td><button class="btn btn-primary" aria-label="Navigate Left" {{ action 'move' -1 0 }}>
        <span class="glyphicon glyphicon-hand-left"></span>
       </button></td><td>
-      </td><td><button class="btn btn-primary" aria-label="Navigate Right"{{ action 'move' 1 0 }}>
+      </td><td><button class="btn btn-primary" aria-label="Navigate Right" {{ action 'move' 1 0 }}>
        <span class="glyphicon glyphicon-hand-right"></span>
       </button></td>
       </tr>
       <tr>
      <td></td><td>
-      <button class="btn btn-primary" aria-label="Navigate Down">
+      <button class="btn btn-primary" aria-label="Navigate Down" {{ action 'move' 0 1 }}>
        <span class="glyphicon glyphicon-hand-down"></span>
       </button>
       </td><td></td>
@@ -48,11 +48,10 @@
 <lable for="height">Height: </lable>{{input value=mapHeight size="3" class="form-control" id="height"}}
 </form>
 <table class="table table-bordered">
-  {{#each map.rows as |row|}}
+  {{#each rows as |row|}}
     <tr>
-      {{#each row.cells as |cell|}}
+      {{#each row as |cell|}}
         <td>
-         <span class="glyphicon glyphicon-tree-deciduous"></span>
         {{cell.text}}
         </td>
       {{/each}}

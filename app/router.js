@@ -13,7 +13,7 @@ Router.map(function() {
     this.route('characters');
     this.route('add-a-character');
     this.route('secretz');
-    this.route('play', {path: 'play/:character'});
+    this.route('play', {path: '/play/:character'});
   });
 });
 
