@@ -3,8 +3,8 @@
     <div class="jumbotron">
     <h1>Login to Venture!</h1>
       <div class="input-group">
-        {{input type="text" valueBinding=identification class="form-control" id="email" placeholder="Email"}}
-        {{input type="password" valueBinding=password class="form-control" id="password" placeholder="Password"}}
+        {{input type="text" valueBinding=identification id="email" placeholder="Email" classNames="app-email form-control"}}
+        {{input type="password" valueBinding=password id="password" placeholder="Password" classNames="app-password form-control"}}
         <button class="btn btn-default" type="button" {{ action 'authenticate' }}>Login</button>
       </div>
     </div>
